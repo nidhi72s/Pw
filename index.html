@@ -1,0 +1,68 @@
+<html>
+<head>
+<title> Password_wallah </title>
+<style>
+     *{font-size:50px;}
+   body{background-color:lightblue;}
+</style>
+<script>
+function gen()
+{
+event.preventDefault();
+let r6 = document.getElementById("r6");
+let r7 = document.getElementById("r7");
+let r8 = document.getElementById("r8");
+let r9 = document.getElementById("r9");
+let msg = document.getElementById("msg");
+let up = document.getElementById("up");
+let dig = document.getElementById("dig");
+
+let si = 0;
+if(r6.checked)        si = 6;
+else if(r7.checked)   si = 7;
+else if(r8.checked)   si = 8;
+else                  si = 9;
+   
+
+let text = "abcdefghijklmnopqrstuvwxyz";
+
+if(up.checked)
+     text = text + text.toUpperCase();
+
+if(dig.checked)
+     text = text + "0123456789";
+let pw = ""
+for(let i = 1;i<=si;i++)
+{
+    let r = parseInt(Math.random() * text.length);
+    pw = pw + text[r];
+
+}
+msg.innerHTML = pw;
+}
+
+</script>
+
+</head>
+<body>
+<center>
+<form onSubmit = "gen()">
+<h1> Password Wallah </h1>
+<label> Select Password Length </label>
+</br>
+<input type = "radio" name = "r1" value = "6"  id = "r6"/> 6
+<input type = "radio" name = "r1" value = "7" id = "r7"/> 7
+<input type = "radio" name ="r1"  value = "8"  id = "r8" checked/> 8
+<input type = "radio" name = "r1" value = "9" id =  "r9"/> 9
+</br> </br>
+<input type = "checkbox" value = "digits" id = "dig"/>Digits
+<input type = "checkbox" value ="up" id = "up" />UpperCase
+</br></br>
+<input type = "submit" value = "Generate Password"/>
+</form>
+<h1 id = "msg"> </h1>
+</center>
+</body>
+
+
+</html>
